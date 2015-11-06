@@ -20,7 +20,7 @@ module ExceptionNotifier
                         require 'rack/request'
                         Rack::Request.new(env)
                       end
-      message     = 'Exception Occured!'
+      message     = "@channel [#{Rails.env}]"
       attachments = build_attachemnt(exception, options)
       @message_opts.merge!(attachments: [attachments])
       @notifier.ping(message, @message_opts) if valid?
